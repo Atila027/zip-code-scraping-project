@@ -47,6 +47,7 @@ const getAddressData = (xlsxData) =>{
 
 getAddressData(xlData);
 
+/*---------------------Main run part-------------------*/
 let count = 0;
 for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
   for (let homeNumber = 1; homeNumber <=500;) {
@@ -64,14 +65,14 @@ for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
       data    : bodyData
     }).then((resolve) => {
       if(resolve.data.zip === ''){
-        homeNumber += 1;
+        continue
       }else{
          count += 1
         console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, resolve.data.zip]);
         homeNumber += 1;
       }
     }).catch((error) => {
-      homeNumber += 1
+      continue
     });
   }  
 }
