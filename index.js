@@ -63,10 +63,14 @@ for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
       headers : bodyData.getHeaders(),
       data    : bodyData
     }).then((resolve) => {
-      count += 1
-      console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, resolve.data.zip]);
+      if(resolve.data.zip === ''){
+        homeNumber += 1;
+      }else{
+         count += 1
+        console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, resolve.data.zip]);
+      }
     }).catch((error) => {
-      addressIndex += 1
+      homeNumber += 1
     });
   }  
 }
