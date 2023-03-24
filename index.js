@@ -48,9 +48,9 @@ const write = async (fileName, fields, data) => {
   }
 
   // Append file function can create new file too.
-  fs.appendFileSync(filename, rows);
+  fs.appendFileSync(filename, rows,encoding='utf-8-sig');
   // Always add new line if file already exists.
-  fs.appendFileSync(filename, "\r\n");
+  fs.appendFileSync(filename, "\r\n",encoding='utf-8-sig');
   console.log(`--------------------------${fileName} is generated successfully--------------`)
 }
 
@@ -74,7 +74,7 @@ const scrap = async (startRow, endRow) => {
   let count = 0;
   console.log(`-------------------------scraping(${startRow} ~ ${endRow}) is started--------------------------`)
   for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
-    for (let homeNumber = 1; homeNumber <=500;) {
+    for (let homeNumber = 1; homeNumber <=10;) {
       let bodyData = new FormData();
       bodyData.append('House', homeNumber);
       bodyData.append('Entry', "");
@@ -120,7 +120,7 @@ const scrap = async (startRow, endRow) => {
 }
 
 
-scrap(1,3)
+scrap(1,2)
 // scrap(23456,23460)
 // scrap(1,560);
 // scrap(560,1120);
