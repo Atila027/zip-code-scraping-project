@@ -120,7 +120,7 @@ const scrap = async (startRow, endRow) => {
 }
 
 
-scrap(1,5)
+// scrap(1,5)
 scrap(23456,23460)
 // scrap(1,560);
 // scrap(560,1120);
