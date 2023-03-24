@@ -48,9 +48,9 @@ const write = async (fileName, fields, data) => {
   }
 
   // Append file function can create new file too.
-  fs.appendFileSync(filename, rows,{ encoding: "utf8", flag: "w" });
+  fs.appendFileSync(filename, rows,{ encoding: "utf8"});
   // Always add new line if file already exists.
-  fs.appendFileSync(filename, "\r\n",{ encoding: "utf8", flag: "w" });
+  fs.appendFileSync(filename, "\r\n",{ encoding: "utf8"});
   console.log(`--------------------------${fileName} is generated successfully--------------`)
 }
 
@@ -114,6 +114,7 @@ const scrap = async (startRow, endRow) => {
   }
 
   console.log("------------------Successfully scraped all data---------------------")
+  console.log(scrapData)
   write(`result${startRow} ~ ${endRow}.csv`, fields, scrapData);
   console.log(`--------------scraping(${startRow} ~ ${endRow}) is finished successfully----------`)
 }
