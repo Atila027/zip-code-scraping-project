@@ -115,6 +115,7 @@ const scrap = async (startRow, endRow) => {
   }
 
   console.log("------------------Successfully scraped all data---------------------")
+  console.log(scrapData);
   write(`result${startRow} ~ ${endRow}.csv`, fieldsContent, scrapData);
   console.log(`--------------scraping(${startRow} ~ ${endRow}) is finished successfully----------`)
 }
