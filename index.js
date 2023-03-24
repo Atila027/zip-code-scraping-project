@@ -50,7 +50,7 @@ getAddressData(xlData);
 // for (let index = 1; index < 501; index++) {
 //   requestZipCode(xlData[3].__EMPTY,xlData[3].__EMPTY_1,index)
 // }
-
+let count = 0;
 for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
   for (let homeNumber = 1; homeNumber <=500; homeNumber++) {
     let bodyData = new FormData();
@@ -67,7 +67,8 @@ for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
       headers : bodyData.getHeaders(),
       data    : bodyData
     }).then((resolve) => {
-        console.log(resolve.data);
+      count += 1
+      console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, resolve.data.zip]);
     }).catch((error) => {
       addressIndex += 1
     });
