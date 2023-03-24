@@ -8,7 +8,7 @@ const FormData = require('form-data')
 /*--------------------Request URL--------------------*/
 const BASE_URL = "https://israelpost.co.il/umbraco/Surface/Zip/FindZip"
 let addressDataInfo = [];
-const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
+// const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
 
 /*---------------------Read Address file-------------------*/
 const workbook = XLSX.readFile('addresses_data.xlsx');
