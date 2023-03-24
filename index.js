@@ -71,9 +71,9 @@ const scrap = async () => {
           console.log("never")
           break;
         } else {
-          console.log('success')
+          console.log('success',response.data.zip)
           count ++;
-          console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, resolve.data.zip]);
+          console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, response.data.zip]);
           homeNumber += 1;
         }
       } catch (e) {
