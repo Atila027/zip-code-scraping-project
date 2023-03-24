@@ -8,7 +8,7 @@ const FormData = require('form-data')
 /*--------------------Request URL--------------------*/
 const BASE_URL = "https://israelpost.co.il/umbraco/Surface/Zip/FindZip"
 let addressDataInfo = [];
-// const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
+const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
 
 /*---------------------Read Address file-------------------*/
 const workbook = XLSX.readFile('addresses_data.xlsx');
@@ -71,7 +71,7 @@ getAddressData(xlData);
 /*---------------------Main run part-------------------*/
 const scrap = async (startRow, endRow) => {
   const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
-  let scrapData = []
+  var scrapData = []
   let count = 0;
   console.log(`-------------------------scraping(${startRow} ~ ${endRow}) is started--------------------------`)
   for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
