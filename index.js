@@ -14,7 +14,7 @@ var fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
 const workbook = XLSX.readFile('addresses_data.xlsx');
 const sheet_name_list = workbook.SheetNames;
 const xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-// console.log(xlData);
+console.log(xlData);
 
 const requestZipCode = (city,street,homeNumber) =>{
   var bodyData = new FormData();
@@ -48,9 +48,9 @@ const write = async (fileName, fields, data) => {
   }
 
   // Append file function can create new file too.
-  fs.appendFileSync(filename, rows,{ encoding: "utf-8-sig", flag: "w" });
+  fs.appendFileSync(filename, rows,{ encoding: "utf8", flag: "w" });
   // Always add new line if file already exists.
-  fs.appendFileSync(filename, "\r\n",{ encoding: "utf-8-sig", flag: "w" });
+  fs.appendFileSync(filename, "\r\n",{ encoding: "utf8", flag: "w" });
   console.log(`--------------------------${fileName} is generated successfully--------------`)
 }
 
@@ -114,7 +114,6 @@ const scrap = async (startRow, endRow) => {
   }
 
   console.log("------------------Successfully scraped all data---------------------")
-  console.log(scrapData);
   write(`result${startRow} ~ ${endRow}.csv`, fields, scrapData);
   console.log(`--------------scraping(${startRow} ~ ${endRow}) is finished successfully----------`)
 }
