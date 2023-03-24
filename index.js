@@ -13,7 +13,7 @@ const xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 // console.log(xlData.length);
 
 /*---------------------Start Row and End Row for addresss-------------------*/
-const startRow = 1;
+const startRow = 3;
 const endRow = 10;
 
 const requestZipCode = (city,street,homeNumber) =>{
@@ -57,8 +57,8 @@ for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
     bodyData.append('StreetID', "");
     bodyData.append('House', homeNumber);
     bodyData.append('Entry', "");
-    bodyData.append('City', addressDataInfo[addressIndex].city);
-    bodyData.append('Street', addressDataInfo[addressIndex].street);
+    bodyData.append('City', xlData[addressIndex].__EMPTY);
+    bodyData.append('Street', xlData[addressIndex].__EMPTY_1);
     // bodyData.append('ByMaanimID', true);
     bodyData.append('__RequestVerificationToken', '8pFf-3UA0Ezy4jE1fiWq9LX9Nb6kV99KHwjcc6uMQrAfULn2KskclwybnHq4aLyn9eC6J7MLoHrix9TCn2XixKlI59C8-AEIhppmCP_1Nsk1');
     Axios({
