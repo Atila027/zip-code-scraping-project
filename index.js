@@ -68,13 +68,16 @@ const scrap = async () => {
         });
 
         if(response.data.zip === '') {
+          console.log("never")
           break;
         } else {
+          console.log('success')
           count ++;
           console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, resolve.data.zip]);
           homeNumber += 1;
         }
       } catch (e) {
+        console.log("err")
         break;
       }
       
