@@ -13,8 +13,8 @@ const xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 // console.log(xlData.length);
 
 /*---------------------Start Row and End Row for addresss-------------------*/
-const startRow = 3;
-const endRow = 10;
+const startRow = 10000;
+const endRow = 10020;
 
 const requestZipCode = (city,street,homeNumber) =>{
   var bodyData = new FormData();
