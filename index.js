@@ -93,7 +93,6 @@ const scrap = async (startRow, endRow) => {
           console.log("never")
           break;
         } else {
-          console.log('success',response.data.zip)
           count ++;
           console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, response.data.zip]);
           scrapData.push({
@@ -113,14 +112,12 @@ const scrap = async (startRow, endRow) => {
   }
 
   console.log("------------------Successfully scraped all data---------------------")
-  console.log(scrapData)
   write(`result${startRow} ~ ${endRow}.csv`, fields, scrapData);
   console.log(`--------------scraping(${startRow} ~ ${endRow}) is finished successfully----------`)
 }
 
+scrap(14350,14355)
 
-scrap(1,3)
-scrap(3,5)
 // scrap(1,560);
 // scrap(560,1120);
 // scrap(1120,1680);
