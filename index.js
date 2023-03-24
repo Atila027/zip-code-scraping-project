@@ -14,7 +14,6 @@ var fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
 const workbook = XLSX.readFile('addresses_data.xlsx');
 const sheet_name_list = workbook.SheetNames;
 const xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-console.log(xlData);
 
 const requestZipCode = (city,street,homeNumber) =>{
   var bodyData = new FormData();
@@ -120,8 +119,8 @@ const scrap = async (startRow, endRow) => {
 }
 
 
-scrap(1,2)
-// scrap(23456,23460)
+scrap(1,3)
+scrap(3.5)
 // scrap(1,560);
 // scrap(560,1120);
 // scrap(1120,1680);
