@@ -70,7 +70,7 @@ getAddressData(xlData);
 
 /*---------------------Main run part-------------------*/
 const scrap = async (startRow, endRow) => {
-  const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
+  const fieldsContent = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
   var scrapData = []
   let count = 0;
   console.log(`-------------------------scraping(${startRow} ~ ${endRow}) is started--------------------------`)
@@ -115,7 +115,7 @@ const scrap = async (startRow, endRow) => {
   }
 
   console.log("------------------Successfully scraped all data---------------------")
-  write(`result${startRow} ~ ${endRow}.csv`, fields, scrapData);
+  write(`result${startRow} ~ ${endRow}.csv`, fieldsContent, scrapData);
   console.log(`--------------scraping(${startRow} ~ ${endRow}) is finished successfully----------`)
 }
 
