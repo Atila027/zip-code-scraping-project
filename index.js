@@ -1,10 +1,14 @@
 const XLSX = require('xlsx')
 const Axios = require('axios').default
+const fs = require('fs');
+const path = require('path');
+const json2csv = require('json2csv').parse;
 const FormData = require('form-data')
 
 /*--------------------Request URL--------------------*/
 const BASE_URL = "https://israelpost.co.il/umbraco/Surface/Zip/FindZip"
 let addressDataInfo = [];
+const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
 
 /*---------------------Read Address file-------------------*/
 const workbook = XLSX.readFile('addresses_data.xlsx');
@@ -35,6 +39,26 @@ const requestZipCode = (city,street,homeNumber) =>{
   }).catch((error) => console.log(error));
 }
 
+const write = async (fileName, fields, data) => {
+  // output file in the same folder
+  const filename = path.join(__dirname,`${fileName}`);
+  let rows;
+  // If file doesn't exist, we will create new file and add rows with headers.    
+  if (!fs.existsSync(filename)) {
+      rows = json2csv(data, { header: true });
+  } else {
+      // Rows without headers.
+      rows = json2csv(data, { header: false });
+  }
+
+  // Append file function can create new file too.
+  fs.appendFileSync(filename, rows);
+  // Always add new line if file already exists.
+  fs.appendFileSync(filename, "\r\n");
+}
+
+
+
 const getAddressData = (xlsxData) =>{
   for (let index = 2; index < xlsxData.length; index++) {
     addressDataInfo.push({
@@ -48,7 +72,8 @@ const getAddressData = (xlsxData) =>{
 getAddressData(xlData);
 
 /*---------------------Main run part-------------------*/
-const scrap = async () => {
+const scrap = async (startRow, endRow) => {
+  let scrapData = []
   let count = 0;
   for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
     for (let homeNumber = 1; homeNumber <=500;) {
@@ -74,31 +99,24 @@ const scrap = async () => {
           console.log('success',response.data.zip)
           count ++;
           console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, response.data.zip]);
+          scrapData.push({
+            'No' : count,
+            'City' : xlData[addressIndex].__EMPTY,
+            'Street' : xlData[addressIndex].__EMPTY_1,
+            'Home Number' : homeNumber,
+            'Zip Code': response.data.zip
+          })
           homeNumber += 1;
         }
       } catch (e) {
         console.log("err")
         break;
       }
-      
-      // Axios({
-      //   method  : 'POST',
-      //   url     : BASE_URL,
-      //   headers : bodyData.getHeaders(),
-      //   data    : bodyData
-      // }).then((resolve) => {
-      //   if(resolve.data.zip === ''){
-      //     break;
-      //   }else{
-      //      count += 1
-      //     console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, resolve.data.zip]);
-      //     homeNumber += 1;
-      //   }
-      // }).catch((error) => {
-      //   break;
-      // });
     }  
   }
+  write(`result${startRow} ~ ${endRow}.csv`, fields, data);
 }
 
-scrap();
+
+scrap(1,560);
+scrap(560,1120);
