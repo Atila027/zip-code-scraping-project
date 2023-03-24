@@ -8,7 +8,7 @@ const FormData = require('form-data')
 /*--------------------Request URL--------------------*/
 const BASE_URL = "https://israelpost.co.il/umbraco/Surface/Zip/FindZip"
 let addressDataInfo = [];
-const fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
+var fields = ['No', 'City', 'Street', 'Home Number', 'Zip Code']
 
 /*---------------------Read Address file-------------------*/
 const workbook = XLSX.readFile('addresses_data.xlsx');
@@ -98,14 +98,13 @@ const scrap = async (startRow, endRow) => {
           count ++;
           console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, response.data.zip]);
           scrapData.push({
-            'No' : count,
-            'City' : xlData[addressIndex].__EMPTY,
-            'Street' : xlData[addressIndex].__EMPTY_1,
+            "No" : count,
+            "City" : xlData[addressIndex].__EMPTY,
+            "Street" : xlData[addressIndex].__EMPTY_1,
             'Home Number' : homeNumber,
             'Zip Code': response.data.zip
           })
           homeNumber += 1;
-          console.log("scrap data is", scrapData)
         }
       } catch (e) {
         console.log("err")
@@ -116,13 +115,13 @@ const scrap = async (startRow, endRow) => {
 
   console.log("------------------Successfully scraped all data---------------------")
   console.log(scrapData);
-  // write(`result${startRow} ~ ${endRow}.csv`, fields, scrapData);
+  write(`result${startRow} ~ ${endRow}.csv`, fields, scrapData);
   console.log(`--------------scraping(${startRow} ~ ${endRow}) is finished successfully----------`)
 }
 
 
-scrap(1,10)
-scrap(23456,23467)
+scrap(1,5)
+scrap(23456,23460)
 // scrap(1,560);
 // scrap(560,1120);
 // scrap(1120,1680);
