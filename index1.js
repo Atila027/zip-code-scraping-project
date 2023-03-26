@@ -114,7 +114,7 @@ const scrap = async (startRow, endRow) => {
   }
 
   console.log("------------------Successfully scraped all data---------------------")
-  write(`scraping(${startRow} ~ ${endRow}.csv`, fields, scrapData);
+  write(`scraping(${startRow} ~ ${endRow}).csv`, fields, scrapData);
   console.log(`--------------scraping(${startRow} ~ ${endRow}) is finished successfully----------`)
 }
 
@@ -153,7 +153,7 @@ const scrap = async (startRow, endRow) => {
 // scrap(19040,19600);
 // scrap(19600,20160);
 // scrap(20160,20720);
-scrap(20720,21280);
+// scrap(20720,21280);
 // scrap(21280,21840);
 // scrap(21840,22400);
 // scrap(22400,22960);
@@ -191,7 +191,7 @@ scrap(20720,21280);
 // scrap(40320,40880);
 // scrap(40880,41440);
 // scrap(41440,42000);
-// scrap(42000,42560);
+scrap(42000,42560);
 // scrap(42560,43120);
 // scrap(43120,43680);
 // scrap(43680,44240);
