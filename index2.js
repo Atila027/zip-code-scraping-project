@@ -97,15 +97,15 @@ const scrap = async (addressIndex) => {
   console.log(`-------------------address ${addressIndex} scraping is finished----------------`)
 }
 
-const factorialRunScript = (num)=>{
-  if(num>1){
+const factorialRunScript = (num,start)=>{
+  if(num>start){
     scrap(num)
     factorialRunScript(num-1)
   }else{
-    scrap(1)
+    scrap(start)
     return;
   }
 }
 
-factorialRunScript(3);
+factorialRunScript(5000,1);
 
