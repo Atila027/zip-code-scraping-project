@@ -93,19 +93,8 @@ const scrap = async (addressIndex) => {
     // break;
     }
   }
-  if(scrapData.length !== 0){
-    await write(`scraping(${addressIndex}).csv`, fields, scrapData);
-    console.log(`-------------------address ${addressIndex} scraping is finished----------------`)
-  }else{
-    await write(`scraping(${addressIndex}).csv`, fields, {
-      "No" : 1,
-      "City" : xlData[addressIndex].__EMPTY,
-      "Street" : xlData[addressIndex].__EMPTY_1,
-      'Home Number' : 'Empty',
-      'Zip Code': 'Not Found'
-    });
-    console.log(`-------------------address ${addressIndex} scraping is finished But I can find nothing----------------`)
-  }
+  await write(`scraping(${addressIndex}).csv`, fields, scrapData);
+  console.log(`-------------------address ${addressIndex} scraping is finished----------------`)
 }
 
 const factorialRunScript = (num)=>{
@@ -118,5 +107,5 @@ const factorialRunScript = (num)=>{
   }
 }
 
-factorialRunScript(500);
+factorialRunScript(3);
 
