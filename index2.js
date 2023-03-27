@@ -114,6 +114,7 @@ const factorialRunScript = (num)=>{
     factorialRunScript(num-1)
   }else{
     scrap(1)
+    return;
   }
 }
 
