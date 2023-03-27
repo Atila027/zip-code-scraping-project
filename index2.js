@@ -100,7 +100,7 @@ const scrap = async (addressIndex) => {
 const factorialRunScript = (num,start)=>{
   if(num>start){
     scrap(num)
-    factorialRunScript(num-1)
+    factorialRunScript(num-1,start)
   }else{
     scrap(start)
     return;
