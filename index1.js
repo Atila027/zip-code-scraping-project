@@ -68,7 +68,7 @@ const scrap = async (startRow, endRow) => {
           break;
         } else {
           count ++;
-          console.log([count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, response.data.zip]);
+          console.log([addressIndex, count, xlData[addressIndex].__EMPTY, xlData[addressIndex].__EMPTY_1, homeNumber, response.data.zip]);
           scrapData.push({
             "No" : count,
             "City" : xlData[addressIndex].__EMPTY,
