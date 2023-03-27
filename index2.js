@@ -118,5 +118,5 @@ const factorialRunScript = (num)=>{
   }
 }
 
-factorialRunScript(xlData.length-1);
+factorialRunScript(500);
 
