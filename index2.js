@@ -56,7 +56,7 @@ const scrap = async (addressIndex) => {
     });
 
     if(response.data.zip === '') {
-      console.log("never")
+      console.log("never",[addressIndex,homeNumber])
       count ++;
       scrapData.push({
       "No" : count,
@@ -80,7 +80,7 @@ const scrap = async (addressIndex) => {
       homeNumber += 1;
     }
     } catch (e) {
-      console.log("err")
+      console.log("err",[addressIndex,homeNumber])
       count ++;
       scrapData.push({
       "No" : count,
