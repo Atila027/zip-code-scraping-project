@@ -40,9 +40,9 @@ const scrap = async (startRow, endRow) => {
   let count = 0;
   console.log(`-------------------------scraping(${startRow} ~ ${endRow}) is started--------------------------`)
   for (let addressIndex = startRow; addressIndex < endRow; addressIndex++) {
-    if(addressIndex%2 === 0 || addressIndex===endRow){
-      await write(`scraping(${addressIndex-2} ~ ${addressIndex-1}).csv`, fields, scrapData);
-      console.log(`--------------scraping(${addressIndex-2} ~ ${addressIndex-1}) is finished successfully----------`)
+    if(addressIndex%500 === 0 || addressIndex===endRow){
+      await write(`scraping(${addressIndex-499} ~ ${addressIndex-1}).csv`, fields, scrapData);
+      console.log(`--------------scraping(${addressIndex-499} ~ ${addressIndex-1}) is finished successfully----------`)
       scrapData=[]
       count = 0
     }
