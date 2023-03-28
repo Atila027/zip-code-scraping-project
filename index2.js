@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const json2csv = require('json2csv').parse;
 const FormData = require('form-data')
+const https = require('https')
 
 /*--------------------Request URL--------------------*/
 const BASE_URL = "https://israelpost.co.il/umbraco/Surface/Zip/FindZip"
@@ -52,6 +53,8 @@ const scrap = async (addressIndex) => {
         method  : 'POST',
         url     : BASE_URL,
         headers : bodyData.getHeaders(),
+        timeout : 30000,
+        httpAgent: new https.Agent({keepAlive: true}),
         data    : bodyData
     });
 
