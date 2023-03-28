@@ -80,6 +80,7 @@ const scrap = async (addressIndex) => {
       homeNumber += 1;
     }
     } catch (e) {
+      console.log("error data",e)
       console.log("err",[addressIndex,homeNumber])
       count ++;
       scrapData.push({
