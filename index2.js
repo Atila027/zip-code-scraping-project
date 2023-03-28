@@ -55,7 +55,7 @@ const scrap = async (addressIndex) => {
         url     : BASE_URL,
         headers : {
           'Content-Type': 'multipart/form-data',
-          'Content-Length' : Buffer.byteLength(post_data),
+          'Content-Length' : Buffer.byteLength(bodyData),
           'Accept': 'application/json',
         },
         timeout : 30000,
