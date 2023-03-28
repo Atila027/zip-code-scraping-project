@@ -108,5 +108,5 @@ const factorialRunScript = (num,start)=>{
   }
 }
 
-factorialRunScript(10000,5000);
+factorialRunScript(10000,2500);
 
