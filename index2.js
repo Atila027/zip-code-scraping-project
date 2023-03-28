@@ -48,11 +48,16 @@ const scrap = async (addressIndex) => {
     bodyData.append('Street', xlData[addressIndex].__EMPTY_1);
     // bodyData.append('ByMaanimID', true);
     bodyData.append('__RequestVerificationToken', '8pFf-3UA0Ezy4jE1fiWq9LX9Nb6kV99KHwjcc6uMQrAfULn2KskclwybnHq4aLyn9eC6J7MLoHrix9TCn2XixKlI59C8-AEIhppmCP_1Nsk1');
+    // console.log('header',bodyData.getHeaders())
     try {
     const response = await Axios({
         method  : 'POST',
         url     : BASE_URL,
-        headers : bodyData.getHeaders(),
+        headers : {
+          'Content-Type': bodyData.getHeaders().content-type,
+          'Content-Length' : Buffer.byteLength(post_data),
+          'Accept': 'application/json',
+        },
         timeout : 30000,
         httpAgent: new https.Agent({keepAlive: true}),
         data    : bodyData
@@ -111,5 +116,6 @@ const factorialRunScript = (num,start)=>{
   }
 }
 
-factorialRunScript(10000,2500);
+factorialRunScript(10000,8000);
+
 
